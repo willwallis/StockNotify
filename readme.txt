@@ -34,4 +34,4 @@ http://tutorialzine.com/2011/02/app-engine-series-2-organizing-your-project/
 
 ********************
 http://www.twilio.com/contests/
-******************** - Will it rain tomorrow?
+******************** 
