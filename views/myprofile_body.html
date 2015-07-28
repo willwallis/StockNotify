@@ -1,0 +1,67 @@
+    <div class="container">
+
+		<section id="editcondition">
+		<form class="form-horizontal" action="/savemyuser" method="post">
+			<fieldset>
+				<legend>My Profile</legend>
+				<div class="control-group">
+					<label class="control-label" for="input01">User Name:</label>
+					<div class="controls">
+			            <input type="text" id="input01" name="name" value="{{MyRecord.name}}">
+                        <span class="help-inline">What would you like to be called?</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input02">Email Address:</label>
+					<div class="controls">
+			            <input type="text" id="input02" name="email" value="{{MyRecord.email}}">
+                        <span class="help-inline">Where to send email notifications?</span>
+                        </div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input03">SMS Number:</label>
+					<div class="controls">
+			            <input type="text" id="input03" name="sms_to_number" value="{{MyRecord.sms_to_number}}">
+                        <span class="help-inline">At what number do you want to receive SMS notifications? (requires Twilio Profile)</span>
+                        </div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input04">Phone Number:</label>
+					<div class="controls">
+			            <input type="text" id="input04" name="phone_to_number" value="{{MyRecord.phone_to_number}}">
+                        <span class="help-inline">At what number do you want to receive phone notifications? (requires Twilio Profile)</span>
+                        </div>
+				</div>
+                <legend>My Twilio Profile</legend>
+                  <p class="help-block">TWILIO is a web based VOIP solution. You can sign up for free and receive SMS and Phone notification in the US. See <a href="http://www.twilio.com" target="_blank">http://www.twilio.com</a></p></br>
+				<div class="control-group">
+					<label class="control-label" for="input05">From Number:</label>
+					<div class="controls">
+			            <input type="text" id="input05" name="from_number" value="{{TwilioRecord.from_number}}">
+                        <span class="help-inline">Available at <a href="https://www.twilio.com/user/account" target="_blank">https://www.twilio.com/user/account</a> after signing up.</span>
+                    </div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input06">Account SID:</label>
+					<div class="controls">
+			            <input type="password" id="input06" name="account_sid" value="{{TwilioRecord.account_sid}}">
+                        <span class="help-inline">See above.</span>
+                    </div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input07">Auth Token:</label>
+					<div class="controls">
+			            <input type="password" id="input07" name="auth_token" value="{{TwilioRecord.auth_token}}">
+                        <span class="help-inline">See above.</span>
+                    </div>
+				</div>
+				<div class="form-actions">
+					<input type="hidden" name="id" value="{{MyRecord.key()}}" />
+					<button type="submit" class="btn btn-primary">Save</button>
+		            <input type='button' class="btn" name="cancel" value="Clear Changes" onClick="window.location='/admin/myprofile';" />
+				</div>
+		</fieldset>
+        </form>
+		</section>	
+	
+    </div> <!-- /container -->

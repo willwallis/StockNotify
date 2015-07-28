@@ -1,0 +1,40 @@
+    <div class="container">
+
+		<section id="editcondition">
+		<form class="form-horizontal" action="/savetwilio" method="post">
+			<fieldset>
+				<legend>Create/Edit Twilio Profile</legend>
+				<div class="control-group">
+					<label class="control-label" for="input01">Profile Name:</label>
+					<div class="controls">
+			            <input type="text" id="input01" name="profile_name" value="{{MyRecord.profile_name}}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input01">From Number:</label>
+					<div class="controls">
+			            <input type="text" id="input01" name="from_number" value="{{MyRecord.from_number}}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input02">Account SID:</label>
+					<div class="controls">
+			            <input type="password" id="input02" name="account_sid" value="{{MyRecord.account_sid}}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input03">Auth Token:</label>
+					<div class="controls">
+			            <input type="password" id="input03" name="auth_token" value="{{MyRecord.auth_token}}">
+					</div>
+				</div>
+					<div class="form-actions">
+					<input type="hidden" name="id" value="{{MyRecord.key()}}" />
+					<button type="submit" class="btn btn-primary">Save</button>
+		            <input type='button' class="btn" name="cancel" value="Cancel" onClick="window.location='/admin/users';" />
+				</div>
+		</fieldset>
+        </form>
+		</section>	
+	
+    </div> <!-- /container -->

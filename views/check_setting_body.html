@@ -1,0 +1,26 @@
+    <div class="container">
+
+		<section id="checksettings">
+		<form class="form-horizontal" action="/admin/checksettings" method="post">
+			<fieldset>
+				<legend>Check Job Settings</legend>
+				<div class="control-group">
+					<label class="control-label" for="optionsCheckboxList">Create detailed logs: </label>
+					<div class="controls">
+						<label class="checkbox">
+							<input type="checkbox" name="detaillog" value="true" {% if Settings.detaillog %}checked{% endif %} />
+						</label>
+					</div>
+				</div>
+				<div class="form-actions">
+					<input type="hidden" name="id" value={{Settings.key()}} />
+					<button type="submit" class="btn btn-primary">Update Settings</button>
+		            <input type='button' class="btn" name="cancel" value="Cancel" onClick="window.location='/admin/checksettings';" />
+				</div>
+
+			</fieldset>
+        </form>
+		</section>
+	
+	
+    </div> <!-- /container -->

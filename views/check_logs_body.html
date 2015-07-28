@@ -1,0 +1,56 @@
+    <div class="container">
+      <section id="loglist">
+		<h1>{{PageTitle}}</h1>
+		<br />
+		<table class="table table-bordered table-striped ">
+			<thead>
+			<tr>
+				<th>Id</th>
+				<th>Date</th>
+				<th>Parent Run</th>
+				<th>Stock</th>
+				<th>Condition</th>
+				<th>Set Price</th>
+				<th>Current Condition</th>
+				<th>Current Price</th>
+				<th>Email</th>
+				<th>SMS</th>
+				<th>Phone</th>
+				<th>Match</th>
+			</tr>
+			</thead>
+			<tbody>
+	{% for result in CheckLogs %}
+			<tr>
+				<td>{{result.key().id()}}</td>
+				<td>{{result.date}}</td>
+				<td>{{result.parent().key().id()}}</td>
+				<td>{{result.stock}}</td>
+				<td>{{result.condexpcheck}}</td>
+				<td>{{result.condprice}}</td>
+				<td>{{result.currexpcheck}}</td>
+				<td>{{result.currprice}}</td>
+				<td>{{result.email}}</td>
+				<td>{{result.sms}}</td>
+				<td>{{result.phone}}</td>
+				<td>{{result.currmatch}}</td>
+			</tr>
+	{% endfor %}
+			</tbody>
+		</table>
+      </section>
+
+	  <section id="logbuttons">
+     	  <form class="form-horizontal" action="/admin/checklogs" method="post">
+			<fieldset>
+				<div>
+		    		<input type="hidden" name="RunKey" value="{{ParentRun}}" />
+		    		<input type="hidden" name="FetchLocation" value="{{FetchLocation}}" />
+					<button type="submit" class="btn" name="action" value="previous">Previous</button>
+					<button type="submit" class="btn" name="action" value="next">Next</button>
+				</div>
+			</fieldset>
+          </form>
+	  </section>
+		
+    </div> <!-- /container -->

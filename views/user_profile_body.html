@@ -1,0 +1,50 @@
+    <div class="container">
+
+		<section id="editcondition">
+		<form class="form-horizontal" action="/saveuser" method="post">
+			<fieldset>
+				<legend>Edit User Profile</legend>
+				<div class="control-group">
+					<label class="control-label" for="input01">User Name:</label>
+					<div class="controls">
+			            <input type="text" id="input01" name="name" value="{{MyRecord.name}}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input02">Email Address:</label>
+					<div class="controls">
+			            <input type="text" id="input02" name="email" value="{{MyRecord.email}}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input03">SMS Number:</label>
+					<div class="controls">
+			            <input type="text" id="input03" name="sms_to_number" value="{{MyRecord.sms_to_number}}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input04">Phone Number:</label>
+					<div class="controls">
+			            <input type="text" id="input04" name="phone_to_number" value="{{MyRecord.phone_to_number}}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="select01">Twilio Profile:</label>
+					<div class="controls">
+						<select id="select01" name='twilio_profile'>
+    {% for Profile in TwiProfile %}
+     						<option value="{{Profile.profile_name}}" {% if Profile.profile_name == MyRecord.twilio_profile %}selected="selected"{% endif %}>{{Profile.profile_name}}</option>
+	{% endfor %}
+                     	</select>
+					</div>
+				</div>
+				<div class="form-actions">
+					<input type="hidden" name="id" value="{{MyRecord.key()}}" />
+					<button type="submit" class="btn btn-primary">Save</button>
+		            <input type='button' class="btn" name="cancel" value="Cancel" onClick="window.location='/admin/users';" />
+				</div>
+		</fieldset>
+        </form>
+		</section>	
+	
+    </div> <!-- /container -->

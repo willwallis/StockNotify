@@ -1,0 +1,108 @@
+    <div class="container">
+
+      <section id="currentuser">
+		<h1>Logged in User</h1>
+		<br />
+		<table class="table table-bordered table-striped ">
+			<thead>
+			<tr>
+				<th>User Id</th>
+				<th>Nickname</th>
+				<th>Email</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td>{{UserList.user_id()}}</td>
+				<td>{{UserList.nickname()}}</td>
+				<td>{{UserList.email()}}</td>
+			</tr>
+			</tbody>
+		</table>
+        <form action="/admin/userprofile" method="post"><button type="submit" class="btn btn-primary">Update Profile</button></form>
+      </section>
+
+	  <section id="userlist">
+		<h1>User List</h1>
+		<br />
+		<table class="table table-bordered table-striped ">
+			<thead>
+			<tr>
+                <th>Google ID</th>
+     			<th>Name</th>
+				<th>Email</th>
+				<th>SMS Number</th>
+				<th>Phone Number</th>
+				<th>Twilio Profile</th>
+				<th>Edit Record</th>
+				<th>Delete Record</th>
+			</tr>
+			</thead>
+			<tbody>
+	{% for UserProfile in UserProfiles %}
+			<tr>
+				<td>{{UserProfile.goog_id}}</td>
+				<td>{{UserProfile.name}}</td>
+				<td>{{UserProfile.email}}</td>
+				<td>{{UserProfile.sms_to_number}}</td>
+				<td>{{UserProfile.phone_to_number}}</td>
+				<td>{{UserProfile.twilio_profile}}</td>
+				<td>
+					<form action="/admin/userprofile" method="post" name="edit_record" style="display: inline; margin: 0;" >
+						<input type="hidden" name="id" value="{{UserProfile.key()}}" />
+						<input type="submit" class="btn btn-success" value="Edit" />
+					</form>
+				</td>
+				<td>
+					<form action="/deleteuser" method="post" name="delete_record" style="margin-bottom: 0" >
+						<input type="hidden" name="id" value="{{UserProfile.key()}}" />
+						<input type="submit" class="btn btn-danger" value="Delete" />
+					</form>
+				</td>
+			</tr>
+	{% endfor %}
+			</tbody>
+		</table>
+      </section>
+
+	  <section id="twiprofile">
+		<h1>Twilio Profiles</h1>
+		<br />
+		<table class="table table-bordered table-striped ">
+			<thead>
+			<tr>
+				<th>Profile Name</th>
+				<th>From Numbers</th>
+				<th>Account SID</th>
+				<th>Auth Token</th>
+				<th>Edit Record</th>
+				<th>Delete Record</th>
+			</tr>
+			</thead>
+			<tbody>
+	{% for TwiSet in TwiProfile %}
+			<tr>
+				<td>{{TwiSet.profile_name}}</td>
+				<td>{{TwiSet.from_number}}</td>
+				<td>{% if TwiSet.account_sid %}********{% endif %}</td>
+				<td>{% if TwiSet.auth_token %}********{% endif %}</td>
+				<td>
+					<form action="/admin/twiprofile" method="post" name="edit_record" style="display: inline; margin: 0;" >
+						<input type="hidden" name="id" value="{{TwiSet.key()}}" />
+						<input type="submit" class="btn btn-success" value="Edit" />
+					</form>
+				</td>
+				<td>
+					<form action="/deletetwilio" method="post" name="delete_record" style="margin-bottom: 0" >
+						<input type="hidden" name="id" value="{{TwiSet.key()}}" />
+						<input type="submit" class="btn btn-danger" value="Delete" />
+					</form>
+				</td>
+			</tr>
+	{% endfor %}
+			</tbody>
+		</table>
+        <form action="/admin/twiprofile" method="post"><button type="submit" class="btn btn-primary">New Profile</button></form>
+      </section>
+  
+    </div> <!-- /container -->

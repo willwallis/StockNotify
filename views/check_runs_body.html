@@ -1,0 +1,59 @@
+    <div class="container">
+
+      <section id="loglist">
+		<h1>{{PageTitle}}</h1>
+		<br />
+		<table class="table table-bordered table-striped ">
+			<thead>
+			<tr>
+				<th>Id</th>
+				<th>Date</th>
+				<th>Conditions Checked</th>
+				<th>Conditions Matched</th>
+			</tr>
+			</thead>
+			<tbody>
+	{% for result in CheckRuns %}
+			<tr>
+				<td><a href="/admin/checklogs?RunKey={{result.key()}}">{{result.key().id()}}</a></td>
+				<td>{{result.date}}</td>
+				<td>{{result.condcount}}</td>
+				<td>{{result.matchcount}}</td>
+			</tr>
+	{% endfor %}
+			</tbody>
+		</table>
+      </section>
+
+	  <section id="logbuttons">
+     	  <form class="form-horizontal" action="/admin/checkruns" method="post">
+			<fieldset>
+				<div>
+		    		<input type="hidden" name="FetchLocation" value="{{FetchLocation}}" />
+					<button type="submit" class="btn" name="action" value="previous">Previous</button>
+					<button type="submit" class="btn" name="action" value="next">Next</button>
+				</div>
+			</fieldset>
+          </form>
+	  </section>
+
+          <div class="accordion" id="accordion2">
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                  Delete Runs & Logs
+                </a>
+              </div>
+              <div id="collapseOne" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  	<form action="/admin/deletelogs" method="post" name="delete_record" style="margin-bottom: 0" >
+						<input type="hidden" name="id" value="AuthorizedKeyName" />
+						<input type="submit" class="btn btn-danger" value="Delete" />
+					</form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+	  
+    </div> <!-- /container -->

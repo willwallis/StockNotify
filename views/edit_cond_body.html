@@ -1,0 +1,67 @@
+    <div class="container">
+		
+		<section id="editcondition">
+		<form class="form-horizontal" action="/savecond" method="post">
+			<fieldset>
+				<legend>Edit Condition</legend>
+				<div class="control-group">
+					<label class="control-label" for="input01">Stock:</label>
+					<div class="controls">
+			            <input type="text" id="input01" name="stock" value={{MyRecord.stock}}>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="select01">Condition:</label>
+					<div class="controls">
+						<select id="select01" name='expcheck'>
+							<option value="Below" {% if MyRecord.expcheck == 'Below' %}selected="selected"{% endif %}>Below</option>
+							<option value="Above" {% if MyRecord.expcheck == 'Above' %}selected="selected"{% endif %}>Above</option>
+						</select>
+					</div>
+				</div>
+                <div class="control-group">
+					<label class="control-label" for="prependedInput" >Price:</label>
+					<div class="controls">
+						<div class="input-prepend">
+							<span class="add-on">$</span><input class="span2" autocomplete="off" id="prependedInput" size="16" type="text" name="price" value={{MyRecord.price}}>
+						</div>
+                    </div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="select02">Status:</label>
+					<div class="controls">
+						<select id="select02" name='status' >
+							<option value="Active" {% if MyRecord.status == 'Active' %}selected="selected"{% endif %}>Active</option>
+							<option value="Inactive" {% if MyRecord.status == 'Inactive' %}selected="selected"{% endif %}>Inactive</option>
+							<option value="Matched" {% if MyRecord.status == 'Matched' %}selected="selected"{% endif %}>Matched</option>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="optionsCheckboxList">Notify By: </label>
+					<div class="controls">
+						<label class="checkbox">
+							<input type="checkbox" name="email" value="true" {% if MyRecord.email %}checked{% endif %} />
+							Email
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" name="sms" value="true" {% if MyRecord.sms %}checked{% endif %} />
+							SMS
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" name="phone" value="true" {% if MyRecord.phone %}checked{% endif %} />
+							Phone
+						</label>
+					</div>
+				</div>
+				<div class="form-actions">
+					<input type="hidden" name="id" value={{MyRecord.key()}} />
+					<button type="submit" class="btn btn-primary">Update Condition</button>
+		            <input type='button' class="btn" name="cancel" value="Cancel" onClick="window.location='/';" />
+				</div>
+			</fieldset>
+        </form>
+		</section>	
+	
+    </div> <!-- /container -->
+

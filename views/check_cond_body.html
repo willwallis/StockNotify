@@ -1,0 +1,32 @@
+    <div class="container">
+		<section id="currentcondition">
+        <h1>Current Condition Status</h1>
+		<br />
+		<table class="table table-bordered table-striped ">
+			<thead>
+			<tr>
+				<th>Stock</th>
+				<th>Condition</th>
+				<th>Set Price</th>
+				<th>Current Condition</th>
+				<th>Current Price</th>
+				<th>Match</th>
+			</tr>
+			</thead>
+			<tbody>
+	{%for key, values in results.items() %}
+				<tr>
+					<td>{{values.get('stock')}}</td>
+					<td>{{values.get('condition')}}</td>
+					<td>{{values.get('price')}}</td>
+					<td>{{values.get('currentcond')}}</td>
+					<td>{{values.get('currentprice')}}</td>
+					<td>{{values.get('match')}}</td>
+				</tr>	
+	{% endfor %}
+			</tbody>
+		</table>
+		</section>
+		
+	
+    </div> <!-- /container -->

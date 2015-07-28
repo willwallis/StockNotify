@@ -1,0 +1,38 @@
+application: stocknotify
+version: 4
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /assets/css
+  static_dir: assets/css
+ 
+- url: /assets/js
+  static_dir: assets/js
+  
+- url: /assets/ico
+  static_dir: assets/ico
+
+- url: /message/.*
+  script: main.app
+  
+- url: /admin/.*
+  script: main.app
+  login: admin
+  
+- url: /checkjob
+  script: main.app
+  login: admin
+ 
+- url: /.*
+  script: main.app
+  login: required
+  
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest
+
+  

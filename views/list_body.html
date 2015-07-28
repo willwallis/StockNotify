@@ -1,0 +1,49 @@
+    <div class="container">
+		<section id="currentcondition">
+        <h1>Current Conditions</h1>
+		<br />
+		<table class="table table-bordered table-striped ">
+			<thead>
+			<tr>
+				<th>Requester</th>
+				<th>Stock</th>
+				<th>Condition</th>
+				<th>Price</th>
+				<th>Email</th>
+				<th>SMS</th>
+				<th>Phone</th>
+				<th>Status</th>
+				<th>Edit Record</th>
+				<th>Delete Record</th>
+			</tr>
+			</thead>
+			<tbody>
+	{% for Condition in Conditions %}
+			<tr>
+				<td>{{Condition.author}}</td>
+				<td>{{Condition.stock}}</td>
+				<td>{{Condition.expcheck}}</td>
+				<td>{{Condition.price}}</td>
+				<td>{{Condition.email}}</td>
+				<td>{{Condition.sms}}</td>
+				<td>{{Condition.phone}}</td>
+				<td>{{Condition.status}}</td>
+				<td>
+					<form action="/editcond" method="post" name="edit_record" style="display: inline; margin: 0;" >
+						<input type="hidden" name="id" value={{Condition.key()}} />
+						<input type="submit" class="btn btn-success" value="Edit" />
+					</form>
+				</td>
+				<td>
+					<form action="/deletecond" method="post" name="delete_record" style="margin-bottom: 0" >
+						<input type="hidden" name="id" value={{Condition.key()}} />
+						<input type="submit" class="btn btn-danger" value="Delete" />
+					</form>
+				</td>
+			</tr>
+	{% endfor %}
+			</tbody>
+		</table>
+		</section>
+	
+    </div> <!-- /container -->

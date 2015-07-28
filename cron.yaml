@@ -1,0 +1,5 @@
+cron:
+- description: check stock conditions
+  url: /checkjob
+  schedule: every 45 minutes from 08:00 to 18:00
+  timezone: America/New_York
